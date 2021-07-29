@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="comments"></div>
+<script>
+    /*Отримати відповідь з цього ресурсу відповідь, та вивести в документ як в прикладі на занятті
+  https://jsonplaceholder.typicode.com/comments*/
+    fetch('https://jsonplaceholder.typicode.com/comments')
+        .then(value => value.json())
+        .then(comments => {
+            let commentsBox = document.getElementsByClassName('comments')[0];
+            for (const comment of comments) {
+                let commentP = document.createElement('p');
+                commentP.innerText = `${comment.postId} - ${comment.id} - ${comment.name}`;
+                commentsBox.appendChild(commentP);
+            }
+        });
+</script>
+</body>
+</html>
